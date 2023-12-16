@@ -1,0 +1,14 @@
+{%extends "guide.html"%}{% csrf_token %} {%block title%} Home Page {% endblock %}
+{%block content %}
+
+<h3> Bird Data Form </h3>
+<a href="{% url 'tasks' %}">Go Back</a>
+<br><br>
+
+<form method="POST", action="", enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

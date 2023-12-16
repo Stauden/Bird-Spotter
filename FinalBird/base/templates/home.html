@@ -1,0 +1,78 @@
+{%extends "guide.html"%}{% csrf_token %} {%block title%} Home Page {% endblock %}
+{%block content %}
+
+
+<div class ="container">
+    <h1>REPORTS</h1><br>
+    <div class="row user-list">
+        {% for user in users %}
+            <div class ="col-12 col-md-6 col-lg-4">
+                <h3><u>{{ user.username }}</u></h3>
+                <ul>
+                    {% for task in user.task_set.all %}
+                            <li>                 
+                                {% if task.data %}
+                                    <strong>Status:</strong> {{ task.data }}<br>
+                                {% endif %}
+                            </li> 
+                            <li>   
+                                <strong>{{ task.title }}</strong>: {{ task.description }}<br>
+                                {% if task.image %}
+                                    <img src="{{ task.image.url }}" alt="{{ task.title }}" style="max-width: 200px; height: auto;"><br>
+                                {% else %}
+                                    <p></p>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if task.image %}
+                                    <strong> Wingspan: </strong> {{ task.wing }} (cm)<br>
+                                {% else %}
+                                    <p></p>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if task.species %}
+                                    <strong> Species: </strong> <a href="{% url 'wiki' task.id%}">{{ task.species }}</a> <br>
+                                {% else %}
+                                    <p></p>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if task.age %}
+                                    <strong> Age: </strong> {{ task.age }}</a> year(s) <br>
+                                {% else %}
+                                    <p></p>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if task.sex %}
+                                    <strong> Sex: </strong> {{ task.sex }}</a> <br>
+                                {% else %}
+                                    <p></p>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if task.injured%}
+                                    <strong> Injured: </strong> Yes</a><br>
+                                {% else %}
+                                    <strong> Injured: </strong> No </a><br>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if task.created %}
+                                    <strong> Date: </strong> {{ task.created }}<br>
+                                {% else %}
+                                    <p></p>
+                                {% endif %} 
+                            </li>
+                        
+                    {% endfor %}
+                </ul>
+            </div>
+            {% empty %}
+                <p>No users found.</p>
+            {% endfor %}
+        </div>
+</div>
+
+{% endblock %}

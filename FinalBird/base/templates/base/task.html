@@ -1,0 +1,14 @@
+{%extends "guide.html"%}{% csrf_token %} {%block title%} Home Page {% endblock %}
+{%block content %}
+
+<h1>
+    Task: {{task.title}}
+    <p>Description: {{task.description}}</p>
+{% if object.image %}
+    <img src="{{ object.image.url }}">
+{% else %}
+    <p></p>
+{% endif %}
+</h1> 
+
+{% endblock %}
