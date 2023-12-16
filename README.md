@@ -7,8 +7,6 @@ Bird Spotter is a Django-based project that creates a vibrant community for bird
 * User Profiles: Create your own birding profile and connect with fellow bird lovers.
 * Bird Logging: Easily log your bird sightings, complete with species, time, and location data.
 * Photo Uploads: Share your bird photographs with the community.
-* Interactive Map: View bird sightings on an interactive map.
-* Community Engagement: Comment on and discuss sightings with a passionate community of birders.
 
 #Usage
 1. Registration: Sign up for an account to start contributing.
